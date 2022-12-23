@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CoffeeOrder {
@@ -42,22 +43,29 @@ public class CoffeeOrder {
 		} else {
 			
 		}
-		File file = new File("order records.txt");
-		try {
-			FileWriter fw = new FileWriter(file, true);
-
-			PrintWriter pw = new PrintWriter(fw);
-			
-			pw.println(order + " " + numcream); // to save order history into the text file
-			pw.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//addOrder(order, numcream);
+		ArrayList<String> orders = CoffeeEmployee.loadOrders();
+		orders.add(order + " " + numcream);
+		CoffeeEmployee.saveOrders(orders);
 		
 	}
+
+//	public static void addOrder(String order, int numcream) {
+//		File file = new File("order records.txt");
+//		try {
+//			FileWriter fw = new FileWriter(file, true);
+//
+//			PrintWriter pw = new PrintWriter(fw);
+//			
+//			pw.println(order + " " + numcream); // to save order history into the text file
+//			pw.close();
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 	
 }
